@@ -1,28 +1,28 @@
-##iOS\_viewcontroller
+##iOS_viewcontroller
 ###**1.View Controller Responsibilities**
 A view controller’s most important responsibility is its view.
 A view controller will typically provide **animation** of the interface as a view comes or goes.
 
 View controllers, working together, can save and restore **state** automatically.
+ 
 
-
-The most powerful view controller is the**root view controller**
+The most powerful view controller is the **root view controller**
 
 ---
 
 ### 2. View Controller Hierarchy
 In iOS, there are **two subordination relationships** between view controllers
 
-**Parentage (containment)**
+1. **Parentage (containment)**
 
-A view controller can contain another view controller. The containing view con‐ troller is the parent of the contained view controller;
+    A view controller can contain another view controller. The containing view con‐ troller is the parent of the contained view controller;
 
-the child view controller’s view, if it is in the interface at all, is a subview (at some depth) of the parent view controller’s view.
+    the child view controller’s view, if it is in the interface at all, is a subview (at some depth) of the parent view controller’s view.
 
-**Presentation (modal views)**
+2. **Presentation (modal views)**
 
-A view controller can present another view controller. The first view controller is the **presenting view controller** (not the parent) of the second; the second view controller is the **presented view controller** (not a child) of the first.
-The second view controller’s view **replaces or covers,** completely or partially, the first view controller’s view.
+    A view controller can present another view controller. The first view controller is the **presenting view controller** (not the parent) of the second; the second view controller is the **presented view controller** (not a child) of the first.
+    The second view controller’s view **replaces or covers,** completely or partially, the first view controller’s view.
 
 Moreover, there is a **clear relationship** between the **view hierarchy** and the view conroller hierarchy
 
@@ -40,8 +40,7 @@ Nevertheless, a view controller in a storyboard is an ordinary nib object and, i
 
 ---
 ###4. How a View Controller Gets Its View
-Initially, when it first comes into existence, a view controller **has no view**. A view controller is a small, **lightweight** object; a view is a relatively 
-**heavyweight** object, involving interface elements that **occupy memory**. Therefore, a view controller **postpones** obtaining its view until it has to do so, namely, when it is asked for the value of its view property.
+Initially, when it first comes into existence, a view controller **has no view**. A view controller is a small, **lightweight** object; a view is a relatively **heavyweight** object, involving interface elements that **occupy memory**. Therefore, a view controller **postpones** obtaining its view until it has to do so, namely, when it is asked for the value of its view property.
 
 To learn whether a view controller has a view without causing it to load its view, call **isViewLoaded**
 
@@ -135,27 +134,27 @@ The status bar may be present or absent. Top and bottom bars may be present or a
 - childViewControllerForStatusBarHidden
 
 ```
-    override var preferredStatusBarStyle: UIStatusBarStyle{
-        return .lightContent
-    }
-    override var prefersStatusBarHidden: Bool
-        {
-            return self.hide
-    }
-    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation
-        {
-            return .fade
-    }
+override var preferredStatusBarStyle: UIStatusBarStyle{
+   return .lightContent
+}
+override var prefersStatusBarHidden: Bool
+   {
+       return self.hide
+}
+override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation
+   {
+       return .fade
+}
 ```
     
 ```
-    @IBAction func doButton(_ sender: Any) {
-        self.hide = !self.hide
-        UIView.animate(withDuration: 1, animations: {
-            self.setNeedsStatusBarAppearanceUpdate()
-            self.view.layoutIfNeeded()
-        })
-    }
+@IBAction func doButton(_ sender: Any) {
+   self.hide = !self.hide
+   UIView.animate(withDuration: 1, animations: {
+       self.setNeedsStatusBarAppearanceUpdate()
+       self.view.layoutIfNeeded()
+   })
+}
 ```
 
 **Extended layout**
@@ -170,230 +169,258 @@ If true, then if edgesForExtendedLayout permits underlapping of bars, those bars
 
 ----
 ####Resizing Events
-• willTransitionToTraitCollection:withTransitionCoordinator:
+•willTransitionToTraitCollection:withTransitionCoordinator:
+
 Sent when the app is about to undergo a change in the trait collection (because the size classes will change).
-• viewWillTransitionToSize:withTransitionCoordinator:
+
+•viewWillTransitionToSize:withTransitionCoordinator:
+
 Sent when the app is about to undergo rotation (even if the rotation turns out to be 180 degrees and the size won’t actually change) or an iPad multitasking size change.
+
 • updateViewConstraints
 • traitCollectionDidChange:
 • viewWillLayoutSubviews
 • viewDidLayoutSubviews
-''	override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
-''         
-''     }
-''     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-''         
-''     }
-''     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-''         
-''     }
-''     override func viewWillLayoutSubviews() {
-''         
-''     }
-''     override func viewDidLayoutSubviews() {
-''         
-''     }
-''     
+
+```
+override func willTransition(to newCollection: UITraitCollection, with coordinator: UIViewControllerTransitionCoordinator) {
+   
+}
+override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+   
+}
+override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+   
+}
+override func viewWillLayoutSubviews() {
+   
+}
+override func viewDidLayoutSubviews() {
+
+}
+```
 
 ----
 ####**Rotation**
 Rotation expresses itself in two ways:
+
 1. The status bar orientation changes
-''	func application(_ application: UIApplication, willChangeStatusBarOrientation newStatusBarOrientation: UIInterfaceOrientation, duration: TimeInterval) {
-''         
-''     }
-''     func application(_ application: UIApplication, didChangeStatusBarOrientation oldStatusBarOrientation: UIInterfaceOrientation) {
-''         
-''     }
 
-''public enum UIInterfaceOrientation : Int {
-'' 
-''     
-''     case unknown
-'' 
-''     case portrait
-'' 
-''     case portraitUpsideDown
-'' 
-''     case landscapeLeft
-'' 
-''     case landscapeRight
-'' }
-'' 
-'' extension UIInterfaceOrientation {
-'' 
-''     public var isLandscape: Bool { get }
-'' 
-''     public var isPortrait: Bool { get }
-'' }
+    ```
+    func application(_ application: UIApplication, willChangeStatusBarOrientation newStatusBarOrientation: UIInterfaceOrientation, duration: TimeInterval) {
+        
+    }
+    func application(_ application: UIApplication, didChangeStatusBarOrientation oldStatusBarOrientation: UIInterfaceOrientation) {
+        
+    }
+    ```
+
 2. The view controller’s view is resized
-----
-###**6. Presented View Controller**
-####**Presenting a View**
-''		self.present(<#T##viewControllerToPresent: UIViewController##UIViewController#>, animated: <#T##Bool#>) { 
-''             
-''         }
-''         self.dismiss(animated: <#T##Bool#>) { 
-''             
-''         }
 
+----
+
+###6. Presented View Controller
+####**Presenting a View**
 1. Presented view controller
 	The view controller specified as Controller:animated:completion:.
+	
 2. Original presenter
 	The view controller to which presentViewController:animated:completion: was sent.
+	
 3. Presenting view controller
 	The presented view controller’s presentingViewController. This is the view con‐ troller whose view is replaced or covered by the presented view controller’s view.
-	Thus, the presented view controller might be the presentedView- Controller of two different view controllers
-**A view controller can have at most one presentedViewController**. If you send present- ViewController:animated:completion: to a view controller whose presentedView- Controller isn’t nil, **nothing will happen and the completion handler is not called** (and you’ll get a warning from the runtime).
-However, a presented view controller can itself present a view controller, so there can be a chain of presented view controllers. If you send dismissViewController- Animated:completion: to a view controller in the middle of a presentation chain — a view controller that has both a presentingViewController and a presentedView- Controller — then its presentedViewController is dismissed.
+	
+Thus, the presented view controller might be thepresentedViewController of two different view controllers
+**A view controller can have at most one presentedViewController**. If you send presentViewController:animated:completion: to a view controller whose presentedViewController isn’t nil, **nothing will happen and the completion handler is not called** (and you’ll get a warning from the runtime).
+
+However, a presented view controller can itself present a view controller, so there can be a chain of presented view controllers. If you send dismissViewControllerAnimated:completion: to a view controller in the middle of a presentation chain — a view controller that has both a presentingViewController and a presentedView- Controller — then its presentedViewController is dismissed.
 
 If you send dismissViewControllerAnimated:completion: to a view controller **whose presentedViewController is nil **and that has no presentingViewController, noth ing will happen (not even a warning in the console), and the completion: handler is not called.
+
 ----
 ####**Presented View Animation**
 There are a few different built-in animation styles (**modal transition styles**) to choose from.
-'' public enum UIModalTransitionStyle : Int {
-'' 
-''     
-''     case coverVertical
-'' 
-''     case flipHorizontal
-'' 
-''     case crossDissolve
-'' 
-''     @available(iOS 3.2, *)
-''     case partialCurl
-'' }
-'' 
+
+```
+public enum UIModalTransitionStyle : Int {
+
+    
+    case coverVertical
+
+    case flipHorizontal
+
+    case crossDissolve
+
+    @available(iOS 3.2, *)
+    case partialCurl
+}
+```
+
 it is attached beforehand to a presented view controller as its **modalTransitionStyle** property
-'' let controler = PresentedController()
-'' if indexPath.row == 0 {
-	'' controler.modalTransitionStyle = .coverVertical
-'' }
-'' else if indexPath.row == 1{
-	'' controler.modalTransitionStyle = .flipHorizontal
-'' }
-'' else if indexPath.row == 2{
-	'' controler.modalTransitionStyle = .crossDissolve
-'' }
-'' else if indexPath.row == 3{
-	'' controler.modalTransitionStyle = .partialCurl
-'' }
-'' self.present(controler, animated: true, completion: nil)
+
+```
+let controler = PresentedController()
+if indexPath.row == 0 {
+  controler.modalTransitionStyle = .coverVertical
+}
+else if indexPath.row == 1{
+  controler.modalTransitionStyle = .flipHorizontal
+}
+else if indexPath.row == 2{
+  controler.modalTransitionStyle = .crossDissolve
+}
+else if indexPath.row == 3{
+  controler.modalTransitionStyle = .partialCurl
+}
+self.present(controler, animated: true, completion: nil)
+```
 
 ----
-####**Presentation Styles**
+####Presentation Styles
 By default, the presented view controller’s view occupies the entire screen, completely replacing that of the presenting view controller. But you can choose from a few other built-in options expressing **how the presented view controller’s view should cover the screen** (**modal presentation styles**).
+
 To choose a presentation style, set the presented view controller’s **modalPresentationStyle** property.
-''public enum UIModalPresentationStyle : Int {
-'' 
-''     
-''     case fullScreen
-'' 
-''     @available(iOS 3.2, *)
-''     case pageSheet
-'' 
-''     @available(iOS 3.2, *)
-''     case formSheet
-'' 
-''     @available(iOS 3.2, *)
-''     case currentContext
-'' 
-''     @available(iOS 7.0, *)
-''     case custom
-'' 
-''     @available(iOS 8.0, *)
-''     case overFullScreen
-'' 
-''     @available(iOS 8.0, *)
-''     case overCurrentContext
-'' 
-''     @available(iOS 8.0, *)
-''     case popover
-'' 
-''     @available(iOS 7.0, *)
-''     case none
-'' }
-'' 
+
+```
+public enum UIModalPresentationStyle : Int {
+
+    
+    case fullScreen
+
+    @available(iOS 3.2, *)
+    case pageSheet
+
+    @available(iOS 3.2, *)
+    case formSheet
+
+    @available(iOS 3.2, *)
+    case currentContext
+
+    @available(iOS 7.0, *)
+    case custom
+
+    @available(iOS 8.0, *)
+    case overFullScreen
+
+    @available(iOS 8.0, *)
+    case overCurrentContext
+
+    @available(iOS 8.0, *)
+    case popover
+
+    @available(iOS 7.0, *)
+    case none
+}
+```
 
 ----
 ###**7. Tab Bar Controller**
 A tab bar is an **independent** interface object, but it is most commonly used in conjunction with a tab bar controller
+
 You can get a reference to the tab bar controller’s tab bar through its **tabBar** property.
+
 If a tab bar controller is the top-level view controller, it determines your app’s **compensatory rotation** behavior.
 • tabBarControllerSupportedInterfaceOrientations:
 • tabBarControllerPreferredInterfaceOrientationForPresentation:
+
 ----
-####**Tab Bar Items**
+
+####Tab Bar Items
 There are two ways to make a tab bar item
+
 1. By borrowing it from the system
-Instantiate UITabBarItem using **init(tabBarSystemItem:tag:)**, and assign the instance to your child view controller’s tabBarItem
+
+    Instantiate UITabBarItem using **init(tabBarSystemItem:tag:)**, and assign the instance to your child view controller’s tabBarItem
 2. By making your own
-Instantiate UITabBarItem using **init(title:image:tag:)** and assign the instance to your child view controller’s tabBarItem. Alternatively, use the view controller’s existing tabBarItem and set its image and title. Instead of setting the title of the tabBarItem, you can set the **title property of the view controller **itself; doing this automatically sets the title of its current tabBarItem (unless the tab bar item is a system tab bar item), though the converse is not true.
+
+    Instantiate UITabBarItem using **init(title:image:tag:)** and assign the instance to your child view controller’s tabBarItem. Alternatively, use the view controller’s existing tabBarItem and set its image and title. Instead of setting the title of the tabBarItem, you can set the **title property of the view controller **itself; doing this automatically sets the title of its current tabBarItem (unless the tab bar item is a system tab bar item), though the converse is not true.
 You can add a separate selectedImage later, or possibly by initializing with **init(title:image:selectedImage:).**
+
 The image (and selectedImage) for a tab bar item should be a 30×30 PNG;
+
 You can also give a tab bar item a **badge** (see the documentation on the badgeValue property).
+
 ----
-####**Configuring a Tab Bar Controller**
+
+####Configuring a Tab Bar Controller
+
 ----
-###**8. Custom Transition**
+
+###8. Custom Transition
 You can** customize the transition** that occurs between view controller views, as follows
+
 • When a **tab bar controller** changes which of its child view controllers is selected, you can animate the change of views.
+
 • When a **navigation controller pushes or pops** a child view controller, you can customize the animation of views.
+
 • When a view controller is **presented or dismissed**, you can customize the animation of views and the placement of the presented view.
+
 ----
-###**9. Container View Controllers**
+
+###9. Container View Controllers
 UITabBarController, UINavigationController, and UIPageViewController are built-in parent view controllers: you hand them a child view controller and they **put that child view controller’s view into the interface for you**, inside their own view. What if you want your **own view controller **to do the same thing?
+
 A custom parent view controller of this sort is called a **container view controller**.
+
 ----
-####**Adding and Removing Children**
+####Adding and Removing Children
 A view controller has a **childViewControllers** array.
 
-''	firstViewController=[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
-''     [self addChildViewController:firstViewController];
-'' 
-''     secondViewController=[[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
-''     [self addChildViewController:secondViewController];
-'' 
-''     thirdViewController=[[ThirdViewController alloc] initWithNibName:@"ThirdViewController" bundle:nil];
-''     [self addChildViewController:thirdViewController];
-'' 
-''     [contentView addSubview:thirdViewController.view];
-''     
-''     [secondViewController removeFromParentViewController];
+```
+firstViewController=[[FirstViewController alloc] initWithNibName:@"FirstViewController" bundle:nil];
+[self addChildViewController:firstViewController];
+
+secondViewController=[[SecondViewController alloc] initWithNibName:@"SecondViewController" bundle:nil];
+[self addChildViewController:secondViewController];
+
+thirdViewController=[[ThirdViewController alloc] initWithNibName:@"ThirdViewController" bundle:nil];
+[self addChildViewController:thirdViewController];
+
+[contentView addSubview:thirdViewController.view];
+    
+[secondViewController removeFromParentViewController];
+currentViewController=thirdViewController;
+```
 
 The next question is how to replace one child view controller’s view in the interface with another 
-''             [self transitionFromViewController:currentViewController toViewController:secondViewController duration:1 options:UIViewAnimationOptionTransitionCurlDown animations:^{
-'' 
-''             }  completion:^(BOOL finished) {
-''                 if (finished) {
-''                   currentViewController=secondViewController;
-''                 }else{
-''                     currentViewController=oldViewController;
-''                 }
-''             }];
+
+```
+  [self transitionFromViewController:currentViewController toViewController:secondViewController duration:1 options:UIViewAnimationOptionTransitionCurlDown animations:^{
+
+  }  completion:^(BOOL finished) {
+      if (finished) {
+        currentViewController=secondViewController;
+      }else{
+          currentViewController=oldViewController;
+      }
+  }];
+```
 ----
-###**9. View Controller Lifetime Events**
-''	override func willMove(toParentViewController parent: UIViewController?) {
-''         print("will move ")
-''     }
-''     override func viewWillAppear(_ animated: Bool) {
-''         print("view will appear")
-''     }
-''     override func updateViewConstraints() {
-''         print("updateViewConstraints")
-''     }
-''     override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
-''         print("traitCollectionDidChange")
-''     }
-''     override func viewWillLayoutSubviews() {
-''         print("viewWillLayoutSubviews")
-''     }
-''     override func viewDidLayoutSubviews() {
-''         print("viewDidLayoutSubviews")
-''     }
-''     override func viewDidAppear(_ animated: Bool) {
-''         print("viewDidAppear")
-''     }
-''     override func didMove(toParentViewController parent: UIViewController?) {
-''         print("didMoveToParentViewController")
-''     }
+###9. View Controller Lifetime Events
+```
+override func willMove(toParentViewController parent: UIViewController?) {
+   print("will move ")
+}
+override func viewWillAppear(_ animated: Bool) {
+   print("view will appear")
+}
+override func updateViewConstraints() {
+   print("updateViewConstraints")
+}
+override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+   print("traitCollectionDidChange")
+}
+override func viewWillLayoutSubviews() {
+   print("viewWillLayoutSubviews")
+}
+override func viewDidLayoutSubviews() {
+   print("viewDidLayoutSubviews")
+}
+override func viewDidAppear(_ animated: Bool) {
+   print("viewDidAppear")
+}
+override func didMove(toParentViewController parent: UIViewController?) {
+   print("didMoveToParentViewController")
+}
+```
+
