@@ -7,14 +7,38 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4708BBEE1DCB127A0086CD8D /* PresentedViewAnimationController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708BBEC1DCB127A0086CD8D /* PresentedViewAnimationController.swift */; };
+		4708BBEF1DCB127A0086CD8D /* PresentedViewAnimationController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4708BBED1DCB127A0086CD8D /* PresentedViewAnimationController.xib */; };
+		4708BBF21DCB14B40086CD8D /* PresentedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708BBF01DCB14B40086CD8D /* PresentedController.swift */; };
+		4708BBF31DCB14B40086CD8D /* PresentedController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 4708BBF11DCB14B40086CD8D /* PresentedController.xib */; };
+		4708BBF91DCB172D0086CD8D /* PresentationStylesController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4708BBF81DCB172D0086CD8D /* PresentationStylesController.swift */; };
+		470A54F41DCA291000EF2DF8 /* NibviewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A54F31DCA291000EF2DF8 /* NibviewController.swift */; };
+		470A54F61DCA295700EF2DF8 /* Nibview.xib in Resources */ = {isa = PBXBuildFile; fileRef = 470A54F51DCA295700EF2DF8 /* Nibview.xib */; };
+		470A54FA1DCA340C00EF2DF8 /* NibInstantiatedController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 470A54F91DCA340C00EF2DF8 /* NibInstantiatedController.swift */; };
+		470A55001DCA37A400EF2DF8 /* Empty.xib in Resources */ = {isa = PBXBuildFile; fileRef = 470A54FF1DCA37A400EF2DF8 /* Empty.xib */; };
 		471024891DCA17940086A071 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 471024881DCA17940086A071 /* AppDelegate.swift */; };
 		4710248E1DCA17940086A071 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4710248C1DCA17940086A071 /* Main.storyboard */; };
 		471024901DCA17950086A071 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4710248F1DCA17950086A071 /* Assets.xcassets */; };
 		471024931DCA17950086A071 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 471024911DCA17950086A071 /* LaunchScreen.storyboard */; };
 		4710249B1DCA18170086A071 /* TableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4710249A1DCA18170086A071 /* TableViewController.swift */; };
+		47392DC21DCB4CFB009B2404 /* ContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47392DC01DCB4CFB009B2404 /* ContainerViewController.swift */; };
+		47392DC31DCB4CFB009B2404 /* ContainerViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47392DC11DCB4CFB009B2404 /* ContainerViewController.xib */; };
+		47392DC61DCB5C27009B2404 /* ViewControllerLifetimeEventsController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47392DC41DCB5C27009B2404 /* ViewControllerLifetimeEventsController.swift */; };
+		47392DC71DCB5C27009B2404 /* ViewControllerLifetimeEventsController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47392DC51DCB5C27009B2404 /* ViewControllerLifetimeEventsController.xib */; };
+		47704E0C1DCAD58C00413FE8 /* StatusBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 47704E0B1DCAD58C00413FE8 /* StatusBarController.swift */; };
+		47704E0E1DCAD95100413FE8 /* StatusBar.xib in Resources */ = {isa = PBXBuildFile; fileRef = 47704E0D1DCAD95100413FE8 /* StatusBar.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4708BBEC1DCB127A0086CD8D /* PresentedViewAnimationController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedViewAnimationController.swift; sourceTree = "<group>"; };
+		4708BBED1DCB127A0086CD8D /* PresentedViewAnimationController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentedViewAnimationController.xib; sourceTree = "<group>"; };
+		4708BBF01DCB14B40086CD8D /* PresentedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentedController.swift; sourceTree = "<group>"; };
+		4708BBF11DCB14B40086CD8D /* PresentedController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PresentedController.xib; sourceTree = "<group>"; };
+		4708BBF81DCB172D0086CD8D /* PresentationStylesController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PresentationStylesController.swift; sourceTree = "<group>"; };
+		470A54F31DCA291000EF2DF8 /* NibviewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibviewController.swift; sourceTree = "<group>"; };
+		470A54F51DCA295700EF2DF8 /* Nibview.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Nibview.xib; sourceTree = "<group>"; };
+		470A54F91DCA340C00EF2DF8 /* NibInstantiatedController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NibInstantiatedController.swift; sourceTree = "<group>"; };
+		470A54FF1DCA37A400EF2DF8 /* Empty.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Empty.xib; sourceTree = "<group>"; };
 		471024851DCA17930086A071 /* ViewControllerTest.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ViewControllerTest.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		471024881DCA17940086A071 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		4710248D1DCA17940086A071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
@@ -22,6 +46,12 @@
 		471024921DCA17950086A071 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		471024941DCA17950086A071 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		4710249A1DCA18170086A071 /* TableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TableViewController.swift; sourceTree = "<group>"; };
+		47392DC01DCB4CFB009B2404 /* ContainerViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContainerViewController.swift; sourceTree = "<group>"; };
+		47392DC11DCB4CFB009B2404 /* ContainerViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ContainerViewController.xib; sourceTree = "<group>"; };
+		47392DC41DCB5C27009B2404 /* ViewControllerLifetimeEventsController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewControllerLifetimeEventsController.swift; sourceTree = "<group>"; };
+		47392DC51DCB5C27009B2404 /* ViewControllerLifetimeEventsController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ViewControllerLifetimeEventsController.xib; sourceTree = "<group>"; };
+		47704E0B1DCAD58C00413FE8 /* StatusBarController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StatusBarController.swift; sourceTree = "<group>"; };
+		47704E0D1DCAD95100413FE8 /* StatusBar.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = StatusBar.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +90,21 @@
 				471024911DCA17950086A071 /* LaunchScreen.storyboard */,
 				471024941DCA17950086A071 /* Info.plist */,
 				4710249A1DCA18170086A071 /* TableViewController.swift */,
+				470A54F31DCA291000EF2DF8 /* NibviewController.swift */,
+				470A54F51DCA295700EF2DF8 /* Nibview.xib */,
+				470A54F91DCA340C00EF2DF8 /* NibInstantiatedController.swift */,
+				470A54FF1DCA37A400EF2DF8 /* Empty.xib */,
+				47704E0B1DCAD58C00413FE8 /* StatusBarController.swift */,
+				47704E0D1DCAD95100413FE8 /* StatusBar.xib */,
+				4708BBEC1DCB127A0086CD8D /* PresentedViewAnimationController.swift */,
+				4708BBED1DCB127A0086CD8D /* PresentedViewAnimationController.xib */,
+				4708BBF01DCB14B40086CD8D /* PresentedController.swift */,
+				4708BBF11DCB14B40086CD8D /* PresentedController.xib */,
+				4708BBF81DCB172D0086CD8D /* PresentationStylesController.swift */,
+				47392DC01DCB4CFB009B2404 /* ContainerViewController.swift */,
+				47392DC11DCB4CFB009B2404 /* ContainerViewController.xib */,
+				47392DC41DCB5C27009B2404 /* ViewControllerLifetimeEventsController.swift */,
+				47392DC51DCB5C27009B2404 /* ViewControllerLifetimeEventsController.xib */,
 			);
 			path = ViewControllerTest;
 			sourceTree = "<group>";
@@ -124,9 +169,16 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47704E0E1DCAD95100413FE8 /* StatusBar.xib in Resources */,
+				470A54F61DCA295700EF2DF8 /* Nibview.xib in Resources */,
 				471024931DCA17950086A071 /* LaunchScreen.storyboard in Resources */,
 				471024901DCA17950086A071 /* Assets.xcassets in Resources */,
+				470A55001DCA37A400EF2DF8 /* Empty.xib in Resources */,
+				4708BBEF1DCB127A0086CD8D /* PresentedViewAnimationController.xib in Resources */,
+				47392DC71DCB5C27009B2404 /* ViewControllerLifetimeEventsController.xib in Resources */,
+				4708BBF31DCB14B40086CD8D /* PresentedController.xib in Resources */,
 				4710248E1DCA17940086A071 /* Main.storyboard in Resources */,
+				47392DC31DCB4CFB009B2404 /* ContainerViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -137,8 +189,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				47704E0C1DCAD58C00413FE8 /* StatusBarController.swift in Sources */,
 				471024891DCA17940086A071 /* AppDelegate.swift in Sources */,
+				4708BBEE1DCB127A0086CD8D /* PresentedViewAnimationController.swift in Sources */,
+				4708BBF21DCB14B40086CD8D /* PresentedController.swift in Sources */,
+				470A54F41DCA291000EF2DF8 /* NibviewController.swift in Sources */,
+				4708BBF91DCB172D0086CD8D /* PresentationStylesController.swift in Sources */,
 				4710249B1DCA18170086A071 /* TableViewController.swift in Sources */,
+				47392DC21DCB4CFB009B2404 /* ContainerViewController.swift in Sources */,
+				47392DC61DCB5C27009B2404 /* ViewControllerLifetimeEventsController.swift in Sources */,
+				470A54FA1DCA340C00EF2DF8 /* NibInstantiatedController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -265,6 +325,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = wang.ViewControllerTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
 		};
@@ -278,6 +339,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = wang.ViewControllerTest;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
 		};
@@ -300,6 +362,7 @@
 				471024991DCA17950086A071 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

@@ -1,24 +1,21 @@
 //
-//  TableViewController.swift
+//  PresentationStylesController.swift
 //  ViewControllerTest
 //
-//  Created by 汪宇豪 on 2016/11/2.
+//  Created by 汪宇豪 on 2016/11/3.
 //  Copyright © 2016年 汪宇豪. All rights reserved.
 //
 
 import UIKit
 
-class TableViewController: UITableViewController {
-
-    let model = ["viewFrom a nib","Nib-Instantiated View Controller","statusbarTest","Presented View Animation","PresentationStyles","Container View Controllers","View Controller Lifetime Events"]
+class PresentationStylesController: UITableViewController {
+    let model = ["FullScreen","OverFullScreen","PageSheet","FormSheet","CurrentContext","OverCurrentContext","popover"]
     override func viewDidLoad() {
         super.viewDidLoad()
-    }
-
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
 
     }
+
+
 
     // MARK: - Table view data source
 
@@ -34,42 +31,37 @@ class TableViewController: UITableViewController {
 
     
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-       // let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
         let cell = UITableViewCell(style: .default, reuseIdentifier: "cell")
         cell.textLabel?.text = self.model[indexPath.row]
         return cell
     }
-    
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let controller = PresentedController()
         if indexPath.row == 0 {
-            let controller = NibviewController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            controller.modalPresentationStyle = .fullScreen
         }
         else if indexPath.row == 1{
-            let arr = UINib(nibName: "Empty", bundle: nil).instantiate(withOwner: nil, options: nil)
-            self.navigationController?.pushViewController(arr[0] as! UIViewController, animated: true)
+            controller.modalPresentationStyle = .overFullScreen
         }
         else if indexPath.row == 2{
-            let controller = StatusBarController()
-            self.navigationController?.pushViewController(controller, animated: true)
+            controller.modalPresentationStyle = .pageSheet
         }
         else if indexPath.row == 3{
-            let controler = PresentedViewAnimationController()
-            self.navigationController?.pushViewController(controler, animated: true)
+            controller.modalPresentationStyle = .formSheet
         }
         else if indexPath.row == 4{
-            let controler = PresentationStylesController()
-            self.navigationController?.pushViewController(controler, animated: true)
+            controller.modalPresentationStyle = .currentContext
         }
         else if indexPath.row == 5{
-            let controler = ContainerViewController()
-            self.navigationController?.pushViewController(controler, animated: true)
+            controller.modalPresentationStyle = .overCurrentContext
         }
-        else if indexPath.row == 6{
-            let controler = ViewControllerLifetimeEventsController()
-            self.navigationController?.pushViewController(controler, animated: true)
-        }
+//        else if indexPath.row == 6{
+//            controller.modalPresentationStyle = .popover
+//        }
+        self.present(controller, animated: true, completion: nil)
+        
     }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
