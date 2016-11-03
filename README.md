@@ -1,3 +1,4 @@
+[TOC]
 ##iOS_viewcontroller
 ###**1.View Controller Responsibilities**
 A view controller’s most important responsibility is its view.
