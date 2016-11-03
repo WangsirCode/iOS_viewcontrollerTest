@@ -1,55 +1,80 @@
-# iOS_viewcontrollerTest
-viewcontroller相关测试
 ##iOS\_viewcontroller
 ###**1.View Controller Responsibilities**
 A view controller’s most important responsibility is its view.
 A view controller will typically provide **animation** of the interface as a view comes or goes.
+
 View controllers, working together, can save and restore **state** automatically.
-The most powerful view controller is the** root view controller**
-----
-###**2. View Controller Hierarchy**
-In iOS, there are **two subordination relationships** between view controllers:
+
+
+The most powerful view controller is the**root view controller**
+
+---
+
+### 2. View Controller Hierarchy
+In iOS, there are **two subordination relationships** between view controllers
+
 **Parentage (containment)**
+
 A view controller can contain another view controller. The containing view con‐ troller is the parent of the contained view controller;
+
 the child view controller’s view, if it is in the interface at all, is a subview (at some depth) of the parent view controller’s view.
+
 **Presentation (modal views)**
-A view controller can present another view controller. The first view controller is the **presenting view controlle**r (not the parent) of the second; the second view controller is the **presented view controller** (not a child) of the first.
+
+A view controller can present another view controller. The first view controller is the **presenting view controller** (not the parent) of the second; the second view controller is the **presented view controller** (not a child) of the first.
 The second view controller’s view **replaces or covers,** completely or partially, the first view controller’s view.
-Moreover, there is a** clear relationship** between the **view hierarchy** and the view con‐ troller hierarchy
+
+Moreover, there is a **clear relationship** between the **view hierarchy** and the view conroller hierarchy
+
 The place of a view controller’s view in the view hierarchy will often be automatic. You might never need to put a UIViewController’s view into the view hierarchy manually.
+
 ----
-###**3. View Controller Creation**
-A view controller is an instance like any other instance, and it is created like any other instance —** by instantiating its class**.
+
+###3. View Controller Creation
+A view controller is an instance like any other instance, and it is created like any other instance — **by instantiating its class**.
+
 Alternatively, a view controller instance might come into existence through the loading of a nib.
+
 A view controller in a storyboard will **go into a nib file** in the built app
-Nevertheless, a view controller in a storyboard is an ordinary nib object and, if it is to be used in the running app, will be instantiated through the loading of the nib **just like any other nib object. **
-###**4. How a View Controller Gets Its View**
-Initially, when it first comes into existence, a view controller **has no view**. A view controller is a small, **lightweight** object; a view is a relatively **heavyweight** object, involving interface elements that **occupy memory**. Therefore, a view controller **postpones** obtaining its view until it has to do so, namely, when it is asked for the value of its view property.
+Nevertheless, a view controller in a storyboard is an ordinary nib object and, if it is to be used in the running app, will be instantiated through the loading of the nib **just like any other nib object.**
+
+---
+###4. How a View Controller Gets Its View
+Initially, when it first comes into existence, a view controller **has no view**. A view controller is a small, **lightweight** object; a view is a relatively 
+**heavyweight** object, involving interface elements that **occupy memory**. Therefore, a view controller **postpones** obtaining its view until it has to do so, namely, when it is asked for the value of its view property.
 
 To learn whether a view controller has a view without causing it to load its view, call **isViewLoaded**
+
 . New in iOS 9, you can refer to a view controller’s view safely, without loading it, as its **viewIfLoaded** (an Optional)
 
 As soon as a view controller has its view, its **viewDidLoad** method is called.
 
 Bear in mind, however, that the view may **not yet be part of the interface**! In fact, it almost certainly is not
+
 Performing certain **customizations** prematurely in viewDidLoad is a common beginner **mistake**.
+
 • The view may be created in the view controller’s own code, **manually**.
 • The view may be created as an **empty generic view, automatically**.
 • The view may be created in its own separate **nib**.
 • The view may be created in a nib, which is **the same nib from which the view controller itself is instantiated.**
-####**Manual View**
+
+---
+####Manual View
 To supply a UIViewController’s view manually, in code, implement its **loadView** method.
+
 ----
-####**Generic Automatic View**
+####Generic Automatic View
+
 ----
-####**View in a Separate Nib**
+####View in a Separate Nib
 • **The File’s Owner class** must be set to a UIViewController subclass (depending on the class of the view controller whose view this will be).
+
 • **The File’s Owner proxy** now has a view outlet, corresponding to a UIView‐ Controller’s view property. This outlet must be connected to the view.
-'' let theRVC = RootViewController(nibName:"MyNib", bundle:nil)
+` let theRVC = RootViewController(nibName:"MyNib", bundle:nil)`
 
-it turns out that if the nib name passed to** init(nibName:bundle:) is nil,** a nib will be sought automatically with the same name as the view controller’s class. Moreover, **UIViewController’s init() calls init(nibName:bundle:), passing nil for both arguments**
+it turns out that if the nib name passed to **init(nibName:bundle:) is nil,** a nib will be sought automatically with the same name as the view controller’s class. Moreover, **UIViewController’s init() calls init(nibName:bundle:), passing nil for both arguments**
 
-Thus, we can name our nib file** RootView.xib** instead of **RootViewController.xib**, and it will still be properly associated with our RootViewController instance.
+Thus, we can name our nib file **RootView.xib** instead of **RootViewController.xib**, and it will still be properly associated with our RootViewController instance.
 
 1. When the view controller first decides that it needs its view, **loadView** is always called.
 
@@ -57,66 +82,94 @@ Thus, we can name our nib file** RootView.xib** instead of **RootViewController.
 
 3. If we don’t override loadView, UIViewController’s built-in **default implementation of loadView** is used. It is this default implementation of loadView that** loads the view controller’s associated nib**. That is why, if we do override loadView, we must not call super — that would cause us to get both behaviors!
 
-4. If the previous steps all fail — we don’t override loadView, and there is no associated nib — UIViewController’s** default implementation of loadView creates a generic UIView.**
+4. If the previous steps all fail — we don’t override loadView, and there is no associated nib — UIViewController’s **default implementation of loadView creates a generic UIView.**
+
 ----
-####**Nib-Instantiated View Controller**
-'' let arr = UINib(nibName: "Main", bundle: nil) .instantiateWithOwner(nil, options: nil) 
-'' self.window!.rootViewController = arr[0] as? UIViewController
+####Nib-Instantiated View Controller
+```
+let arr = UINib(nibName: "Main", bundle: nil) .instantiateWithOwner(nil, options: nil) 
+self.window!.rootViewController = arr[0] as? UIViewController
+```
+
 When a view controller is instantiated from a nib, your implementation of its init(nibName:bundle:) initializer is not called. If your nib-instantiated UIView‐ Controller subclass needs access to the view controller instance very early in its lifetime, override init(coder:) or **awakeFromNib**.
+
 ----
-####**Storyboard-Instantiated View Controller**
+####Storyboard-Instantiated View Controller
 Each scene in a .storyboard file is rather like a .xib file containing a **view controller nib object.**
+
 A scene’s view controller is instantiated only **when needed**; the underlying mechanism is that the scene’s view controller is stored in a nib file in the built app, inside the .storyboardc bundle, and **this nib file is loaded on demand and the view controller is instantiated from it**, as we did in the previous section.
+
 ----
-###**5. View Resizing**
-####**View Size in the Nib Editor**
+###5. View Resizing
+####View Size in the Nib Editor
 When you design your interface in the nib editor, every view controller’s view has to be displayed at some definite size. But that size may not be the size at which the view will appear at runtime.
+
 ----
-####**Bars and Underlapping**
+####Bars and Underlapping
 **The status bar is underlapped**
+
 **Top and bottom bars may be underlapped**
+
 The top and bottom bars displayed by a navigation controller (navigation bar, tool‐ bar) or tab bar controller (tab bar) can be translucent. When they are, your view controller’s view is, by default, **extended behind the translucent bar**
-The status bar may be present or absent. Top and bottom bars may be present or absent, and, if present, their height can change. How will your interface **cope with such changes**? The primary coping mechanism is the view controller’s** layout guides**.
-- **topLayoutGuide**
-• If there is a status bar and no top bar, the topLayoutGuide is positioned at the bottom of the status bar.
-• If there is a top bar, the topLayoutGuide is positioned at the bottom of the top bar.
-• If there is no top bar and no status bar, the topLayoutGuide is positioned at the top of the view.
-- **bottomLayoutGuide**
-• If there is a bottom bar, the bottomLayoutGuide is positioned at the top of the bottom bar.
-• If there is no bottom bar, the bottomLayoutGuide is positioned at the bottom of the view.
+The status bar may be present or absent. Top and bottom bars may be present or absent, and, if present, their height can change. How will your interface **cope with such changes**? The primary coping mechanism is the view controller’s **layout guides**.
+
+1. **topLayoutGuide**
+
+	• If there is a status bar and no top bar, the topLayoutGuide is positioned at the bottom of the status bar.
+
+	• If there is a top bar, the topLayoutGuide is positioned at the bottom of the top bar.
+
+	• If there is no top bar and no status bar, the topLayoutGuide is positioned at the top of the view.
+
+2. **bottomLayoutGuide**
+
+	• If there is a bottom bar, the bottomLayoutGuide is positioned at the top of the bottom bar.
+
+	• If there is no bottom bar, the bottomLayoutGuide is positioned at the bottom of the view.
 
 **Status bar visibility**
+
 - preferredStatusBarStyle
 - prefersStatusBarHidden
 - childViewControllerForStatusBarStyle
 - childViewControllerForStatusBarHidden
 
-''     override var preferredStatusBarStyle: UIStatusBarStyle{
-''         return .lightContent
-''     }
-''     override var prefersStatusBarHidden: Bool
-''         {
-''             return self.hide
-''     }
-''     override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation
-''         {
-''             return .fade
-''     }
-''	@IBAction func doButton(_ sender: Any) {
-''         self.hide = !self.hide
-''         UIView.animate(withDuration: 1, animations: {
-''             self.setNeedsStatusBarAppearanceUpdate()
-''             self.view.layoutIfNeeded()
-''         })
-''     }
+```
+    override var preferredStatusBarStyle: UIStatusBarStyle{
+        return .lightContent
+    }
+    override var prefersStatusBarHidden: Bool
+        {
+            return self.hide
+    }
+    override var preferredStatusBarUpdateAnimation: UIStatusBarAnimation
+        {
+            return .fade
+    }
+```
+    
+```
+    @IBAction func doButton(_ sender: Any) {
+        self.hide = !self.hide
+        UIView.animate(withDuration: 1, animations: {
+            self.setNeedsStatusBarAppearanceUpdate()
+            self.view.layoutIfNeeded()
+        })
+    }
+```
 
 **Extended layout**
+
 - edgesForExtendedLayout
+
  A UIRectEdge. The default is .All, meaning that this view controller’s view will underlap a translucent top bar or a translucent bottom bar. The other extreme is .None, meaning that this view controller’s view won’t underlap top and bottom bars. Other possibilities are .Top (underlap translucent top bars only) and .Bottom (underlap translucent bottom bars only).
+ 
 - extendedLayoutIncludesOpaqueBars
+
 If true, then if edgesForExtendedLayout permits underlapping of bars, those bars will be underlapped even if they are opaque. The default is false, meaning that only translucent bars are underlapped.
+
 ----
-####**Resizing Events**
+####Resizing Events
 • willTransitionToTraitCollection:withTransitionCoordinator:
 Sent when the app is about to undergo a change in the trait collection (because the size classes will change).
 • viewWillTransitionToSize:withTransitionCoordinator:
